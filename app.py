@@ -11,9 +11,9 @@ import pyproj
 # Import the layout from layout.py
 from layout import layout
 
-studentInfo_df = pd.read_csv('oulad/studentInfo_df.csv')
-student_df = pd.read_csv('oulad/student_df.csv')
-evaluation_df = pd.read_csv('oulad/evaluation.csv')
+studentInfo_df = pd.read_csv('OULAD/studentInfo_df.csv')
+student_df = pd.read_csv('OULAD/student_df.csv')
+evaluation_df = pd.read_csv('OULAD/evaluation.csv')
 
 
 gdf = gpd.read_file('NUTS_Level_1_January_2018_GCB_in_the_United_Kingdom_2022_403493202252417583')
