@@ -23,7 +23,6 @@ boxPlot = dcc.Loading(dcc.Graph(id='boxPlot'))
 scatterPlot = dcc.Loading(dcc.Graph(id='scatterPlot'))
 areaPlot = dcc.Loading(dcc.Graph(id='areaPlot',style={'height':'353px'}))
 
-
 row1 = dbc.Row([
     dbc.Col([
         dbc.Row([

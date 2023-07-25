@@ -11,12 +11,12 @@ import pyproj
 # Import the layout from layout.py
 from layout import layout
 
-studentInfo_df = pd.read_csv('OULAD/studentInfo_df.csv')
-student_df = pd.read_csv('OULAD/student_df.csv')
-evaluation_df = pd.read_csv('OULAD/evaluation.csv')
+studentInfo_df = pd.read_csv('oulad/studentInfo_df.csv')
+student_df = pd.read_csv('oulad/student_df.csv')
+evaluation_df = pd.read_csv('oulad/evaluation.csv')
 
 
-gdf = gpd.read_file('NUTS_Level_1_January_2018_GCB_in_the_United_Kingdom_2022_4034932022524175836')
+gdf = gpd.read_file('NUTS_Level_1_January_2018_GCB_in_the_United_Kingdom_2022_403493202252417583')
 gdf.to_crs(pyproj.CRS.from_epsg(4326), inplace=True)
 
 mapping_dict = {
@@ -36,7 +36,8 @@ mapping_dict = {
 gdf['nuts118nm'] = gdf['nuts118nm'].replace(mapping_dict)
 
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.CYBORG])
+app = dash.Dash(__name__, title='OULAD', external_stylesheets=[dbc.themes.CYBORG])
+server = app.server
 
 app.layout = layout
 
