@@ -20,7 +20,7 @@ className='mb-3')
 barChart = dcc.Loading(dcc.Graph(id='barChart'))
 choroplethMap = dcc.Loading(dcc.Graph(id='choroplethMap',style={'height':'850px'}))
 boxPlot = dcc.Loading(dcc.Graph(id='boxPlot'))
-scatterPlot = dcc.Loading(dcc.Graph(id='scatterPlot'))
+scatterPlot = dcc.Loading(dcc.Graph(id='scatterPlot',clear_on_unhover=True))
 areaPlot = dcc.Loading(dcc.Graph(id='areaPlot',style={'height':'353px'}))
 
 row1 = dbc.Row([

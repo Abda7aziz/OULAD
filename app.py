@@ -75,8 +75,9 @@ def sCards(module,x,bar,map):
     Input('moduleDropdown', 'value'),
     Input('xAxisDropDown','value'),
     Input('barChart', 'selectedData'),
-    Input('choroplethMap','selectedData'))
-def table(module,x,bar,map):
+    Input('choroplethMap','selectedData'),
+    Input('scatterPlot', 'hoverData'))
+def table(module,x,bar,map,scatter):
     df = evaluation_df.copy()
     if module != None:
         df = df[(df['code_module']==module.split('-')[0])&(df['code_presentation']==module.split('-')[1])]
@@ -90,7 +91,10 @@ def table(module,x,bar,map):
             df = df[df['region']==map['points'][0]['hovertext']]
         elif len(map['points']) > 1:
             df = df[df['region'].isin([map['points'][i]['hovertext'] for i in range(len(map['points']))])]
-        
+    if scatter != None:
+        df = df.iloc[[scatter['points'][0]['pointIndex']]]
+        print(df.head())
+
     df.drop(columns=['code_module','code_presentation'],inplace=True)
     df = df[['id_student','region','module','final_result','score','sum_click']]
     columns=[{'name': i, 'id': i} for i in df.columns.tolist()]
@@ -145,7 +149,6 @@ def sCards(module,x,bar,map):
     df = evaluation_df.copy()
     if module != None:
         df = df[df['module']==module]
-        print(df.head())
     if bar != None:
         if len(bar['points']) == 1:
             df = df[df[x]==bar['points'][0]['x']]
